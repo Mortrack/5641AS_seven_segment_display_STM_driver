@@ -3,16 +3,15 @@
 This library provides the definitions, variables and functions that together work as the driver for the 5641AS 7-segment
 Display Device with the purpose of being used by the implementer for whatever custom application purpose. For more
 details about how to use this library, feel free to read the
-<a href=#>documentation of this project</a>.
+<a href=https://github.com/Mortrack/5641AS_seven_segment_display_driver/tree/main/documentation>documentation of this project</a>.
 
 # How to explore the project files.
 The following will describe the general purpose of the folders that are located in the current directory address:
 
 - **/'Inc'**:
-    - This folder contains the <a href=#>header file of this library</a>.
-      - <a href=https://github.com/Mortrack/AT-09_zs040_ble_driver/blob/main/Inc/AT-09_zs040_ble_driver.h>The actual driver library</a>.
+    - This folder contains the <a href=https://github.com/Mortrack/5641AS_seven_segment_display_driver/blob/main/Inc/5641as_display_driver.h>header file of this library</a>.
 - **/'Src'**:
-    - This folder contains the <a href=#>source code file of this library</a>.
+    - This folder contains the <a href=https://github.com/Mortrack/5641AS_seven_segment_display_driver/blob/main/Src/5641as_display_driver.c>source code file of this library</a>.
 - **/documentation**:
     - This folder provides the documentation to learn all the details of this library and to know how to use it. 
 

@@ -16,7 +16,7 @@ On the other hand, for reaching out a code example for implementing this library
 
 Last but not least, the configurations and details of the microcontroller used for testing and validating this library
 can be reviewed at the
-<a href=#>STM32CubeMX_configurations_report.pdf</a>
+<a href=https://github.com/Mortrack/5641AS_seven_segment_display_driver/blob/main/documentation/pdfs/STM32CubeMX_configurations_report.pdf>STM32CubeMX_configurations_report.pdf</a>
 file, where it is important to highlight that the UART1 was used for the printf() function of the stdio.h C library.
 
 <i><b><u>NOTE:</u></b> To be able to link the printf() function to the UART1 as it was done during the testings and
