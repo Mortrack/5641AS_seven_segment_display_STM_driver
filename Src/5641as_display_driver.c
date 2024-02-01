@@ -23,7 +23,7 @@ static uint32_t current_display_off_time_step;                                  
  */
 typedef enum
 {
-	Command_NULL_in_ASCII                   = 0,     //!< \f$[NULL]_{ASCII} = 0_d\f$.
+    Command_NULL_in_ASCII                   = 0,     //!< \f$[NULL]_{ASCII} = 0_d\f$.
     Command_space_in_ASCII                  = 32,    //!< \f$[SPACE]_{ASCII} = 32_d\f$.
     //Letter_exclamation_mark_in_ASCII        = 33,    //!< \f$!_{ASCII} = 48_d\f$.
     Letter_double_quotation_mark_in_ASCII   = 34,    //!< \f$"_{ASCII} = 34_d\f$.
@@ -41,16 +41,16 @@ typedef enum
     Letter_dot_sign_in_ASCII                = 46,    //!< \f$._{ASCII} = 46_d\f$.
     //Letter_forward_slash_in_ASCII           = 47,
     Number_0_in_ASCII	                    = 48,    //!< \f$0_{ASCII} = 48_d\f$.
-	Number_1_in_ASCII	                    = 49,    //!< \f$1_{ASCII} = 49_d\f$.
-	Number_2_in_ASCII	                    = 50,    //!< \f$2_{ASCII} = 50_d\f$.
-	Number_3_in_ASCII	                    = 51,    //!< \f$3_{ASCII} = 51_d\f$.
-	Number_4_in_ASCII	                    = 52,    //!< \f$4_{ASCII} = 52_d\f$.
-	Number_5_in_ASCII	                    = 53,    //!< \f$5_{ASCII} = 53_d\f$.
-	Number_6_in_ASCII	                    = 54,    //!< \f$6_{ASCII} = 54_d\f$.
-	Number_7_in_ASCII	                    = 55,    //!< \f$7_{ASCII} = 55_d\f$.
-	Number_8_in_ASCII	                    = 56,    //!< \f$8_{ASCII} = 56_d\f$.
-	Number_9_in_ASCII	                    = 57,    //!< \f$9_{ASCII} = 57_d\f$.
-	//Letter_colon_mark_in_ASCII              = 58,
+    Number_1_in_ASCII	                    = 49,    //!< \f$1_{ASCII} = 49_d\f$.
+    Number_2_in_ASCII	                    = 50,    //!< \f$2_{ASCII} = 50_d\f$.
+    Number_3_in_ASCII	                    = 51,    //!< \f$3_{ASCII} = 51_d\f$.
+    Number_4_in_ASCII	                    = 52,    //!< \f$4_{ASCII} = 52_d\f$.
+    Number_5_in_ASCII	                    = 53,    //!< \f$5_{ASCII} = 53_d\f$.
+    Number_6_in_ASCII	                    = 54,    //!< \f$6_{ASCII} = 54_d\f$.
+    Number_7_in_ASCII	                    = 55,    //!< \f$7_{ASCII} = 55_d\f$.
+    Number_8_in_ASCII	                    = 56,    //!< \f$8_{ASCII} = 56_d\f$.
+    Number_9_in_ASCII	                    = 57,    //!< \f$9_{ASCII} = 57_d\f$.
+    //Letter_colon_mark_in_ASCII              = 58,
     //Letter_semicolon_mark_in_ASCII          = 59,
     //Letter_less_than_sign_in_ASCII          = 60,
     Letter_equals_sign_in_ASCII             = 61,    //!< \f$=_{ASCII} = 61_d\f$.
@@ -108,7 +108,7 @@ typedef enum
     //Letter_q_in_ASCII                       = 113,
     Letter_r_in_ASCII                       = 114,   //!< \f$r_{ASCII} = 114_d\f$.
     //Letter_s_in_ASCII                       = 115,
-    //Letter_t_in_ASCII                       = 116,
+    Letter_t_in_ASCII                       = 116,   //!< \f$t_{ASCII} = 116_d\f$.
     Letter_u_in_ASCII                       = 117,   //!< \f$u_{ASCII} = 117_d\f$.
     //Letter_v_in_ASCII                       = 118,
     //Letter_w_in_ASCII                       = 119,
@@ -155,8 +155,8 @@ static void turn_off_all_5641as_display_terminals();
 
 void init_5641as_display_module(TIM_HandleTypeDef *htim, Display_5641AS_peripherals_def_t *peripherals, uint32_t on_time_steps, uint32_t off_time_steps)
 {
-	/* Persist the pointer to the Timer that is desired for the 5641AS 7-segment Display module to use. */
-	p_htim = htim;
+    /* Persist the pointer to the Timer that is desired for the 5641AS 7-segment Display module to use. */
+    p_htim = htim;
 
     /* Persist the pointer to the 5641AS 7-segment Display Device's Peripherals Definition Structure. */
     p_display_peripherals = peripherals;
@@ -225,6 +225,7 @@ Display_5641AS_Status set_5641as_display_output(char display_output[DISPLAY_5641
             case Letter_n_in_ASCII:
             case Letter_o_in_ASCII:
             case Letter_r_in_ASCII:
+            case Letter_t_in_ASCII:
             case Letter_u_in_ASCII:
             case Letter_vertical_bar_in_ASCII:
                 break;
@@ -287,10 +288,10 @@ void set_display_off_time_steps(uint32_t off_time_steps)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
     /* Proceed with executing the code for the @ref display_5641as only if the current callback corresponds to the Timer designated to this module. */
-	if (htim->Instance == p_htim->Instance)
-	{
+    if (htim->Instance == p_htim->Instance)
+    {
         /* Generate the corresponding simulated PWM in order to show the lastly requested ASCII Characters at the 5641AS 7-segment Display Device. */
-		if (current_display_on_time_step != display_on_time_steps) // If true, then the current time step of the @ref display_5641as is at the On time of the currently simulated PWM output at the 5641AS Device.
+        if (current_display_on_time_step != display_on_time_steps) // If true, then the current time step of the @ref display_5641as is at the On time of the currently simulated PWM output at the 5641AS Device.
         {
             /* Only if this is the first On-Time step of the current PWM Period, then turn On the corresponding LEDs at the 5641AS 7-segment Display Device and maintain them that way in order to show the desired output in it. */
             if (current_display_on_time_step == 0)
@@ -421,6 +422,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
                     case Letter_r_in_ASCII:
                         show_custom_display_output(GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_RESET);
                         break;
+                    case Letter_t_in_ASCII:
+                        show_custom_display_output(GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET);
+                        break;
                     case Letter_u_in_ASCII:
                         show_custom_display_output(GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET);
                         break;
@@ -469,7 +473,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
                 }
             }
         }
-	}
+    }
 }
 
 static void show_custom_display_output(GPIO_PinState A_pin_state, GPIO_PinState B_pin_state, GPIO_PinState C_pin_state, GPIO_PinState D_pin_state, GPIO_PinState E_pin_state, GPIO_PinState F_pin_state, GPIO_PinState G_pin_state, GPIO_PinState Dp_pin_state)
