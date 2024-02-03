@@ -1,6 +1,6 @@
 # 5641AS 7-segment Display Driver module C driver library
 
-Version: 1.2.0.0
+Version: 1.3.0.0
 
 This library provides the definitions, variables and functions that together work as the driver for the 5641AS 7-segment
 Display Device with the purpose of being used by the implementer for whatever custom application purpose. For more

@@ -119,16 +119,16 @@ typedef enum
     Letter_vertical_bar_in_ASCII            = 124,   //!< \f$|_{ASCII} = 124_d\f$.
     //Letter_closing_curly_brackets_in_ASCII  = 125,
     //Letter_tilde_in_ASCII                   = 126
-    Number_0Dp_in_ASCII	                    = 256,    //!< \f$0._{ASCII} = 256_d custom value\f$.
-    Number_1Dp_in_ASCII	                    = 257,    //!< \f$1._{ASCII} = 257_d custom value\f$.
-    Number_2Dp_in_ASCII	                    = 258,    //!< \f$2._{ASCII} = 258_d custom value\f$.
-    Number_3Dp_in_ASCII	                    = 259,    //!< \f$3._{ASCII} = 259_d custom value\f$.
-    Number_4Dp_in_ASCII	                    = 260,    //!< \f$4._{ASCII} = 260_d custom value\f$.
-    Number_5Dp_in_ASCII	                    = 261,    //!< \f$5._{ASCII} = 261_d custom value\f$.
-    Number_6Dp_in_ASCII	                    = 262,    //!< \f$6._{ASCII} = 262_d custom value\f$.
-    Number_7Dp_in_ASCII	                    = 263,    //!< \f$7._{ASCII} = 263_d custom value\f$.
-    Number_8Dp_in_ASCII	                    = 264,    //!< \f$8._{ASCII} = 264_d custom value\f$.
-    Number_9Dp_in_ASCII	                    = 265     //!< \f$9._{ASCII} = 265_d custom value\f$.
+    Number_0Dp_in_ASCII	                    = 256,    //!< \f$0._{ASCII} = 256_d\f$ custom value.
+    Number_1Dp_in_ASCII	                    = 257,    //!< \f$1._{ASCII} = 257_d\f$ custom value.
+    Number_2Dp_in_ASCII	                    = 258,    //!< \f$2._{ASCII} = 258_d\f$ custom value.
+    Number_3Dp_in_ASCII	                    = 259,    //!< \f$3._{ASCII} = 259_d\f$ custom value.
+    Number_4Dp_in_ASCII	                    = 260,    //!< \f$4._{ASCII} = 260_d\f$ custom value.
+    Number_5Dp_in_ASCII	                    = 261,    //!< \f$5._{ASCII} = 261_d\f$ custom value.
+    Number_6Dp_in_ASCII	                    = 262,    //!< \f$6._{ASCII} = 262_d\f$ custom value.
+    Number_7Dp_in_ASCII	                    = 263,    //!< \f$7._{ASCII} = 263_d\f$ custom value.
+    Number_8Dp_in_ASCII	                    = 264,    //!< \f$8._{ASCII} = 264_d\f$ custom value.
+    Number_9Dp_in_ASCII	                    = 265     //!< \f$9._{ASCII} = 265_d\f$ custom value.
 } Display_5641AS_Supported_ASCII_Characters;
 
 /**@brief	Turns On and Off the desired LEDs of the 7-segment Display from the 5641AS Device that corresponds according
