@@ -7,14 +7,14 @@
 
 #define SEVEN_SEGMENT_DISPLAY_5641AS_LEDS_SIZE      (8)        /**< @brief Total maximum LEDs available in single 7-segment Display of the 5641AS Device (including the Dp LED). */
 
-static TIM_HandleTypeDef *p_htim;                                                                /**< @brief Pointer to the Timer Handle Structure of the Timer that will be used in this @ref display_5641as to refresh/update the value shown at the 5641AS 7-segment Display Module. @details This pointer's value is defined in the @ref init_5641as_display_module function. */
-static Display_5641AS_peripherals_def_t *p_display_peripherals;                                  /**< @brief Pointer to the 5641AS 7-segment Display Device's Peripherals Definition Structure that will be used in this @ref display_5641as to control the GPIO Peripherals towards which the terminals of the 5641AS 7-segment Display device are connected to. @details This pointer's value is defined in the @ref init_5641as_display_module function. */
-static char display_5641as_output[DISPLAY_5641AS_CHARACTERS_SIZE] = {'\0', '\0', '\0', '\0'};    /**< @brief Pointer towards where the the desired ASCII characters currently shown at the 5641AS 7-segment Display is stored in the Memory. */
-static uint8_t currently_enabled_5641as_7segment_display = 0;                                            /**< @brief Global Variable that indicates the currently enabled 7-segment Display from the 5641AS Device. @details The values contained in this variable should be the following:<br><br>* 0 = K1 5641AS 7-segment display is currently enabled.<br>* 1 = K2 5641AS 7-segment display is currently enabled.<br>* 2 = K3 5641AS 7-segment display is currently enabled.<br>* 3 = K4 5641AS 7-segment display is currently enabled. */
-static uint32_t display_on_time_steps;                                                           /**< @brief Global Variable that will hold the desired number of steps during which each Display Character will be electrically turned On. @note One step equals the elapsed time at which the Interrupt Callback of the Timer of the @ref p_htim pointer is called. @details This pointer's value is defined in the @ref init_5641as_display_module function. */
-static uint32_t display_off_time_steps;                                                          /**< @brief Global Variable that will hold the desired number of steps during which each Display Character will be electrically turned Off. @note One step equals the elapsed time at which the Interrupt Callback of the Timer of the @ref p_htim pointer is called. @details This pointer's value is defined in the @ref init_5641as_display_module function. */
-static uint32_t current_display_on_time_step;                                                    /**< @brief Global Variable that will hold the current time step, with respect to @ref display_on_time_steps , at which the @ref display_5641as is at whenever turning On the corresponding LEDs from the 5641AS 7-segment Display Device as stated at @ref display_5641as_output . @note The idea of this Global Variable, together with the @ref current_display_off_time_step Global Variable is to simulate/generate a PWM output for each of the 7-segment Displays contained in the 5641AS Device. */
-static uint32_t current_display_off_time_step;                                                   /**< @brief Global Variable that will hold the current time step, with respect to @ref display_off_time_steps , at which the @ref display_5641as is at whenever turning Off all the LEDs from the 5641AS 7-segment Display Device. @note The idea of this Global Variable, together with the @ref current_display_on_time_step Global Variable is to simulate/generate a PWM output for each of the 7-segment Displays contained in the 5641AS Device. */
+static TIM_HandleTypeDef *p_htim;                                                                    /**< @brief Pointer to the Timer Handle Structure of the Timer that will be used in this @ref display_5641as to refresh/update the value shown at the 5641AS 7-segment Display Module. @details This pointer's value is defined in the @ref init_5641as_display_module function. */
+static Display_5641AS_peripherals_def_t *p_display_peripherals;                                      /**< @brief Pointer to the 5641AS 7-segment Display Device's Peripherals Definition Structure that will be used in this @ref display_5641as to control the GPIO Peripherals towards which the terminals of the 5641AS 7-segment Display device are connected to. @details This pointer's value is defined in the @ref init_5641as_display_module function. */
+static uint16_t display_5641as_output[DISPLAY_5641AS_CHARACTERS_SIZE] = {'\0', '\0', '\0', '\0'};    /**< @brief Pointer towards where the the desired ASCII characters currently shown at the 5641AS 7-segment Display is stored in the Memory. */
+static uint8_t currently_enabled_5641as_7segment_display = 0;                                        /**< @brief Global Variable that indicates the currently enabled 7-segment Display from the 5641AS Device. @details The values contained in this variable should be the following:<br><br>* 0 = K1 5641AS 7-segment display is currently enabled.<br>* 1 = K2 5641AS 7-segment display is currently enabled.<br>* 2 = K3 5641AS 7-segment display is currently enabled.<br>* 3 = K4 5641AS 7-segment display is currently enabled. */
+static uint32_t display_on_time_steps;                                                               /**< @brief Global Variable that will hold the desired number of steps during which each Display Character will be electrically turned On. @note One step equals the elapsed time at which the Interrupt Callback of the Timer of the @ref p_htim pointer is called. @details This pointer's value is defined in the @ref init_5641as_display_module function. */
+static uint32_t display_off_time_steps;                                                              /**< @brief Global Variable that will hold the desired number of steps during which each Display Character will be electrically turned Off. @note One step equals the elapsed time at which the Interrupt Callback of the Timer of the @ref p_htim pointer is called. @details This pointer's value is defined in the @ref init_5641as_display_module function. */
+static uint32_t current_display_on_time_step;                                                        /**< @brief Global Variable that will hold the current time step, with respect to @ref display_on_time_steps , at which the @ref display_5641as is at whenever turning On the corresponding LEDs from the 5641AS 7-segment Display Device as stated at @ref display_5641as_output . @note The idea of this Global Variable, together with the @ref current_display_off_time_step Global Variable is to simulate/generate a PWM output for each of the 7-segment Displays contained in the 5641AS Device. */
+static uint32_t current_display_off_time_step;                                                       /**< @brief Global Variable that will hold the current time step, with respect to @ref display_off_time_steps , at which the @ref display_5641as is at whenever turning Off all the LEDs from the 5641AS 7-segment Display Device. @note The idea of this Global Variable, together with the @ref current_display_on_time_step Global Variable is to simulate/generate a PWM output for each of the 7-segment Displays contained in the 5641AS Device. */
 
 /**@brief	ASCII code character definitions that are available in the @ref display_5641as .
  *
@@ -119,6 +119,16 @@ typedef enum
     Letter_vertical_bar_in_ASCII            = 124,   //!< \f$|_{ASCII} = 124_d\f$.
     //Letter_closing_curly_brackets_in_ASCII  = 125,
     //Letter_tilde_in_ASCII                   = 126
+    Number_0Dp_in_ASCII	                    = 256,    //!< \f$0._{ASCII} = 256_d custom value\f$.
+    Number_1Dp_in_ASCII	                    = 257,    //!< \f$1._{ASCII} = 257_d custom value\f$.
+    Number_2Dp_in_ASCII	                    = 258,    //!< \f$2._{ASCII} = 258_d custom value\f$.
+    Number_3Dp_in_ASCII	                    = 259,    //!< \f$3._{ASCII} = 259_d custom value\f$.
+    Number_4Dp_in_ASCII	                    = 260,    //!< \f$4._{ASCII} = 260_d custom value\f$.
+    Number_5Dp_in_ASCII	                    = 261,    //!< \f$5._{ASCII} = 261_d custom value\f$.
+    Number_6Dp_in_ASCII	                    = 262,    //!< \f$6._{ASCII} = 262_d custom value\f$.
+    Number_7Dp_in_ASCII	                    = 263,    //!< \f$7._{ASCII} = 263_d custom value\f$.
+    Number_8Dp_in_ASCII	                    = 264,    //!< \f$8._{ASCII} = 264_d custom value\f$.
+    Number_9Dp_in_ASCII	                    = 265     //!< \f$9._{ASCII} = 265_d custom value\f$.
 } Display_5641AS_Supported_ASCII_Characters;
 
 /**@brief	Turns On and Off the desired LEDs of the 7-segment Display from the 5641AS Device that corresponds according
@@ -171,12 +181,12 @@ void init_5641as_display_module(TIM_HandleTypeDef *htim, Display_5641AS_peripher
     HAL_TIM_Base_Start_IT(p_htim);
 }
 
-void get_5641as_display_output(char display_output[DISPLAY_5641AS_CHARACTERS_SIZE])
+void get_5641as_display_output(uint16_t display_output[DISPLAY_5641AS_CHARACTERS_SIZE])
 {
     memcpy(display_output, display_5641as_output, DISPLAY_5641AS_CHARACTERS_SIZE);
 }
 
-Display_5641AS_Status set_5641as_display_output(char display_output[DISPLAY_5641AS_CHARACTERS_SIZE])
+Display_5641AS_Status set_5641as_display_output(uint16_t display_output[DISPLAY_5641AS_CHARACTERS_SIZE])
 {
     /* Validate the desired output to be displayed at the 5641AS 7-segment Display Device. */
     for (uint8_t current_display_output=0; current_display_output<DISPLAY_5641AS_CHARACTERS_SIZE; current_display_output++)
@@ -228,6 +238,16 @@ Display_5641AS_Status set_5641as_display_output(char display_output[DISPLAY_5641
             case Letter_t_in_ASCII:
             case Letter_u_in_ASCII:
             case Letter_vertical_bar_in_ASCII:
+            case Number_0Dp_in_ASCII:
+            case Number_1Dp_in_ASCII:
+            case Number_2Dp_in_ASCII:
+            case Number_3Dp_in_ASCII:
+            case Number_4Dp_in_ASCII:
+            case Number_5Dp_in_ASCII:
+            case Number_6Dp_in_ASCII:
+            case Number_7Dp_in_ASCII:
+            case Number_8Dp_in_ASCII:
+            case Number_9Dp_in_ASCII:
                 break;
             default:
                 return Display_5641AS_EC_ERR;
@@ -430,6 +450,36 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
                         break;
                     case Letter_vertical_bar_in_ASCII:
                         show_custom_display_output(GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET);
+                        break;
+                    case Number_0_in_ASCII:
+                        show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_SET);
+                        break;
+                    case Number_1_in_ASCII:
+                        show_custom_display_output(GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_SET);
+                        break;
+                    case Number_2_in_ASCII:
+                        show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET);
+                        break;
+                    case Number_3_in_ASCII:
+                        show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET);
+                        break;
+                    case Number_4_in_ASCII:
+                        show_custom_display_output(GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET);
+                        break;
+                    case Number_5_in_ASCII:
+                        show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET);
+                        break;
+                    case Number_6_in_ASCII:
+                        show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET);
+                        break;
+                    case Number_7_in_ASCII:
+                        show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_SET);
+                        break;
+                    case Number_8_in_ASCII:
+                        show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET);
+                        break;
+                    case Number_9_in_ASCII:
+                        show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET);
                         break;
                     default:
                         show_null_display_output(); // This case should not give place ever.

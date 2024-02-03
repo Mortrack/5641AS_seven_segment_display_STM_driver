@@ -99,8 +99,8 @@
   // ##### SHOWING ALL THE VALID ASCII CHARACTERS OF THE 5641AS 7-SEGMENT DISPLAY MODULE AT THE 5641AS DEVICE ##### //
   // ############################################################################################################## //
   Display_5641AS_Status ret;
-  char display_output[DISPLAY_5641AS_CHARACTERS_SIZE];
-  for (uint8_t i=0; i<127; i++)
+  uint16_t display_output[DISPLAY_5641AS_CHARACTERS_SIZE];
+  for (uint16_t i=0; i<266; i++)
   {
     display_output[0] = i;
     display_output[1] = i;
@@ -154,8 +154,8 @@ typedef enum
  *          Display device will be connected to.
  */
 typedef struct __attribute__ ((__packed__)) {
-	GPIO_TypeDef *GPIO_Port;	//!< Type Definition of the GPIO peripheral port to which this @ref HM10_GPIO_def_t structure will be associated with.
-	uint16_t GPIO_Pin;			//!< Pin number of the GPIO peripheral from to this @ref HM10_GPIO_def_t structure will be associated with.
+    GPIO_TypeDef *GPIO_Port;	//!< Type Definition of the GPIO peripheral port to which this @ref HM10_GPIO_def_t structure will be associated with.
+    uint16_t GPIO_Pin;			//!< Pin number of the GPIO peripheral from to this @ref HM10_GPIO_def_t structure will be associated with.
 } Display_5641AS_GPIO_def_t;
 
 /**@brief	5641AS 7-segment Display Device's Peripherals Definition parameters structure.
@@ -186,7 +186,7 @@ typedef struct __attribute__ ((__packed__)) {
  * @author	César Miranda Meza (cmirandameza3@hotmail.com)
  * @date    January 28, 2024.
  */
-void get_5641as_display_output(char display_output[DISPLAY_5641AS_CHARACTERS_SIZE]);
+void get_5641as_display_output(uint16_t display_output[DISPLAY_5641AS_CHARACTERS_SIZE]);
 
 /**@brief	Sets the ASCII characters that is desired to be currently shown at the 5641AS 7-segment Display Device.
  *
@@ -203,7 +203,7 @@ void get_5641as_display_output(char display_output[DISPLAY_5641AS_CHARACTERS_SIZ
  * @author	César Miranda Meza (cmirandameza3@hotmail.com)
  * @date    January 28, 2024.
  */
-Display_5641AS_Status set_5641as_display_output(char display_output[DISPLAY_5641AS_CHARACTERS_SIZE]);
+Display_5641AS_Status set_5641as_display_output(uint16_t display_output[DISPLAY_5641AS_CHARACTERS_SIZE]);
 
 /**@brief	Gets the currently configured number of steps during which each 7-segment display of the 5641AS Device is
  *          being electrically turned On at the moment.
