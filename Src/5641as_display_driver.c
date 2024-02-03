@@ -451,34 +451,34 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
                     case Letter_vertical_bar_in_ASCII:
                         show_custom_display_output(GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET);
                         break;
-                    case Number_0_in_ASCII:
+                    case Number_0Dp_in_ASCII:
                         show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_SET);
                         break;
-                    case Number_1_in_ASCII:
+                    case Number_1Dp_in_ASCII:
                         show_custom_display_output(GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_SET);
                         break;
-                    case Number_2_in_ASCII:
+                    case Number_2Dp_in_ASCII:
                         show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET);
                         break;
-                    case Number_3_in_ASCII:
+                    case Number_3Dp_in_ASCII:
                         show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET);
                         break;
-                    case Number_4_in_ASCII:
+                    case Number_4Dp_in_ASCII:
                         show_custom_display_output(GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET);
                         break;
-                    case Number_5_in_ASCII:
+                    case Number_5Dp_in_ASCII:
                         show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET);
                         break;
-                    case Number_6_in_ASCII:
+                    case Number_6Dp_in_ASCII:
                         show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET);
                         break;
-                    case Number_7_in_ASCII:
+                    case Number_7Dp_in_ASCII:
                         show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_SET);
                         break;
-                    case Number_8_in_ASCII:
+                    case Number_8Dp_in_ASCII:
                         show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET);
                         break;
-                    case Number_9_in_ASCII:
+                    case Number_9Dp_in_ASCII:
                         show_custom_display_output(GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_RESET, GPIO_PIN_RESET, GPIO_PIN_SET, GPIO_PIN_SET, GPIO_PIN_SET);
                         break;
                     default:
