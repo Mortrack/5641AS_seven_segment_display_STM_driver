@@ -122,6 +122,7 @@
  *
  * @author 	Cesar Miranda Meza (cmirandameza3@hotmail.com)
  * @date	January 30, 2024.
+ * @date    LAST UPDATE: February 03, 2024.
  */
 
 #ifndef DISPLAY_5641AS_DRIVER_H_
@@ -185,6 +186,7 @@ typedef struct __attribute__ ((__packed__)) {
  *
  * @author	César Miranda Meza (cmirandameza3@hotmail.com)
  * @date    January 28, 2024.
+ * @date    LAST UPDATE: February 03, 2024.
  */
 void get_5641as_display_output(uint16_t display_output[DISPLAY_5641AS_CHARACTERS_SIZE]);
 
@@ -202,6 +204,7 @@ void get_5641as_display_output(uint16_t display_output[DISPLAY_5641AS_CHARACTERS
  *
  * @author	César Miranda Meza (cmirandameza3@hotmail.com)
  * @date    January 28, 2024.
+ * @date    LAST UPDATE: February 03, 2024.
  */
 Display_5641AS_Status set_5641as_display_output(uint16_t display_output[DISPLAY_5641AS_CHARACTERS_SIZE]);
 
