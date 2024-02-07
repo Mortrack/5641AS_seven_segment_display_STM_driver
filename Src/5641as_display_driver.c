@@ -13,8 +13,8 @@ static uint16_t display_5641as_output[DISPLAY_5641AS_CHARACTERS_SIZE] = {'\0', '
 static uint8_t currently_enabled_5641as_7segment_display = 0;                                        /**< @brief Global Variable that indicates the currently enabled 7-segment Display from the 5641AS Device. @details The values contained in this variable should be the following:<br><br>* 0 = K1 5641AS 7-segment display is currently enabled.<br>* 1 = K2 5641AS 7-segment display is currently enabled.<br>* 2 = K3 5641AS 7-segment display is currently enabled.<br>* 3 = K4 5641AS 7-segment display is currently enabled. */
 static uint32_t display_on_time_steps;                                                               /**< @brief Global Variable that will hold the desired number of steps during which each Display Character will be electrically turned On. @note One step equals the elapsed time at which the Interrupt Callback of the Timer of the @ref p_htim pointer is called. @details This pointer's value is defined in the @ref init_5641as_display_module function. */
 static uint32_t display_off_time_steps;                                                              /**< @brief Global Variable that will hold the desired number of steps during which each Display Character will be electrically turned Off. @note One step equals the elapsed time at which the Interrupt Callback of the Timer of the @ref p_htim pointer is called. @details This pointer's value is defined in the @ref init_5641as_display_module function. */
-static uint32_t current_display_on_time_step;                                                        /**< @brief Global Variable that will hold the current time step, with respect to @ref display_on_time_steps , at which the @ref display_5641as is at whenever turning On the corresponding LEDs from the 5641AS 7-segment Display Device as stated at @ref display_5641as_output . @note The idea of this Global Variable, together with the @ref current_display_off_time_step Global Variable is to simulate/generate a PWM output for each of the 7-segment Displays contained in the 5641AS Device. */
-static uint32_t current_display_off_time_step;                                                       /**< @brief Global Variable that will hold the current time step, with respect to @ref display_off_time_steps , at which the @ref display_5641as is at whenever turning Off all the LEDs from the 5641AS 7-segment Display Device. @note The idea of this Global Variable, together with the @ref current_display_on_time_step Global Variable is to simulate/generate a PWM output for each of the 7-segment Displays contained in the 5641AS Device. */
+static uint32_t current_display_on_time_step = 0;                                                    /**< @brief Global Variable that will hold the current time step, with respect to @ref display_on_time_steps , at which the @ref display_5641as is at whenever turning On the corresponding LEDs from the 5641AS 7-segment Display Device as stated at @ref display_5641as_output . @note The idea of this Global Variable, together with the @ref current_display_off_time_step Global Variable is to simulate/generate a PWM output for each of the 7-segment Displays contained in the 5641AS Device. */
+static uint32_t current_display_off_time_step = 0;                                                   /**< @brief Global Variable that will hold the current time step, with respect to @ref display_off_time_steps , at which the @ref display_5641as is at whenever turning Off all the LEDs from the 5641AS 7-segment Display Device. @note The idea of this Global Variable, together with the @ref current_display_on_time_step Global Variable is to simulate/generate a PWM output for each of the 7-segment Displays contained in the 5641AS Device. */
 
 /**@brief	ASCII code character definitions that are available in the @ref display_5641as .
  *
@@ -178,7 +178,17 @@ void init_5641as_display_module(TIM_HandleTypeDef *htim, Display_5641AS_peripher
     display_off_time_steps = off_time_steps;
 
     /* Starts the given Timer's Base generation in Interrupt mode. */
-    HAL_TIM_Base_Start_IT(p_htim);
+    start_5641as_display_module();
+}
+
+void start_5641as_display_module(void)
+{
+    HAL_TIM_Base_Stop_IT(p_htim);
+}
+
+void stop_5641as_display_module(void)
+{
+    HAL_TIM_Base_Stop_IT(p_htim);
 }
 
 void get_5641as_display_output(uint16_t display_output[DISPLAY_5641AS_CHARACTERS_SIZE])

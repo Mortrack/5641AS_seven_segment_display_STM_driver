@@ -209,8 +209,14 @@ Functions</h2></td></tr>
 <tr class="memitem:ga178fc1d0d635712da5a324ee2415a6de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/group__display__5641as.html#ga178fc1d0d635712da5a324ee2415a6de">set_display_off_time_steps</a> (uint32_t off_time_steps)</td></tr>
 <tr class="memdesc:ga178fc1d0d635712da5a324ee2415a6de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the desired number of steps during which it is wanted that each 7-segment display of the 5641AS Device is electrically turned Off at the moment.  <br /></td></tr>
 <tr class="separator:ga178fc1d0d635712da5a324ee2415a6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaad25aab79537a7123473e0f8abbe0bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/group__display__5641as.html#gaaad25aab79537a7123473e0f8abbe0bc">start_5641as_display_module</a> (void)</td></tr>
+<tr class="memdesc:gaaad25aab79537a7123473e0f8abbe0bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the Timer's Base generation in Interrupt Mode of the given Timer that the <a class="el" href="../../df/d0a/group__display__5641as.html">5641AS 7-segment Display Driver module</a> has been configured with when initializing it via the <a class="el" href="../../df/d0a/group__display__5641as.html#gaa05dc07a82e47ca44a857f6723ef2e64">init_5641as_display_module</a> function.  <br /></td></tr>
+<tr class="separator:gaaad25aab79537a7123473e0f8abbe0bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga289f3e96f0aaff9fa5862752956eee9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/group__display__5641as.html#ga289f3e96f0aaff9fa5862752956eee9f">stop_5641as_display_module</a> (void)</td></tr>
+<tr class="memdesc:ga289f3e96f0aaff9fa5862752956eee9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the Timer's Base generation in Interrupt Mode of the given Timer that the <a class="el" href="../../df/d0a/group__display__5641as.html">5641AS 7-segment Display Driver module</a> has been configured with when initializing it via the <a class="el" href="../../df/d0a/group__display__5641as.html#gaa05dc07a82e47ca44a857f6723ef2e64">init_5641as_display_module</a> function.  <br /></td></tr>
+<tr class="separator:ga289f3e96f0aaff9fa5862752956eee9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa05dc07a82e47ca44a857f6723ef2e64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/group__display__5641as.html#gaa05dc07a82e47ca44a857f6723ef2e64">init_5641as_display_module</a> (TIM_HandleTypeDef *htim, <a class="el" href="../../da/d45/struct_display__5641_a_s__peripherals__def__t.html">Display_5641AS_peripherals_def_t</a> *peripherals, uint32_t on_time_steps, uint32_t off_time_steps)</td></tr>
-<tr class="memdesc:gaa05dc07a82e47ca44a857f6723ef2e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the <a class="el" href="../../df/d0a/group__display__5641as.html">5641AS 7-segment Display Driver module</a> in order to be able to use its provided functions.  <br /></td></tr>
+<tr class="memdesc:gaa05dc07a82e47ca44a857f6723ef2e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the <a class="el" href="../../df/d0a/group__display__5641as.html">5641AS 7-segment Display Driver module</a> in order to be able to use its provided functions and also starts that module.  <br /></td></tr>
 <tr class="separator:gaa05dc07a82e47ca44a857f6723ef2e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8a3b0ad512a6e6c6157440b68d395eac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/group__display__5641as.html#ga8a3b0ad512a6e6c6157440b68d395eac">HAL_TIM_PeriodElapsedCallback</a> (TIM_HandleTypeDef *htim)</td></tr>
 <tr class="memdesc:ga8a3b0ad512a6e6c6157440b68d395eac"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the overridden function <a class="el" href="../../df/d0a/group__display__5641as.html#ga8a3b0ad512a6e6c6157440b68d395eac">HAL_TIM_PeriodElapsedCallback</a> that the STMicroelectronics Library provides in order for the implementers of that function to state some desired actions for each time whenever the non-blocking mode is triggered by a desired Timer.  <br /></td></tr>
@@ -301,7 +307,7 @@ If the <a class="el" href="../../df/d0a/group__display__5641as.html#ga8a3b0ad512
 <div class="ttc" id="agroup__display__5641as_html_ga79aea6daac71928414d30fcf86cbaabe"><div class="ttname"><a href="../../df/d0a/group__display__5641as.html#ga79aea6daac71928414d30fcf86cbaabe">Display_5641AS_Status</a></div><div class="ttdeci">Display_5641AS_Status</div><div class="ttdoc">5641AS 7-segment Display Driver Exception codes.</div><div class="ttdef"><b>Definition</b> 5641as_display_driver.h:143</div></div>
 <div class="ttc" id="agroup__display__5641as_html_ga92f9a1ce8452b81e191bfa017993deb9"><div class="ttname"><a href="../../df/d0a/group__display__5641as.html#ga92f9a1ce8452b81e191bfa017993deb9">DISPLAY_5641AS_CHARACTERS_SIZE</a></div><div class="ttdeci">#define DISPLAY_5641AS_CHARACTERS_SIZE</div><div class="ttdoc">Total maximum characters that can be shown in the 5641AS 7-segment Display Device simultaneously (i....</div><div class="ttdef"><b>Definition</b> 5641as_display_driver.h:134</div></div>
 <div class="ttc" id="agroup__display__5641as_html_gaa05dc07a82e47ca44a857f6723ef2e64"><div class="ttname"><a href="../../df/d0a/group__display__5641as.html#gaa05dc07a82e47ca44a857f6723ef2e64">init_5641as_display_module</a></div><div class="ttdeci">void init_5641as_display_module(TIM_HandleTypeDef *htim, Display_5641AS_peripherals_def_t *peripherals, uint32_t on_time_steps, uint32_t off_time_steps)</div><div class="ttdoc">Initializes the 5641AS 7-segment Display Driver module in order to be able to use its provided functi...</div><div class="ttdef"><b>Definition</b> 5641as_display_driver.c:166</div></div>
-<div class="ttc" id="agroup__display__5641as_html_gae1d706a7aeace1c0da7eee8a0a9d412c"><div class="ttname"><a href="../../df/d0a/group__display__5641as.html#gae1d706a7aeace1c0da7eee8a0a9d412c">set_5641as_display_output</a></div><div class="ttdeci">Display_5641AS_Status set_5641as_display_output(uint16_t display_output[DISPLAY_5641AS_CHARACTERS_SIZE])</div><div class="ttdoc">Sets the ASCII characters that is desired to be currently shown at the 5641AS 7-segment Display Devic...</div><div class="ttdef"><b>Definition</b> 5641as_display_driver.c:189</div></div>
+<div class="ttc" id="agroup__display__5641as_html_gae1d706a7aeace1c0da7eee8a0a9d412c"><div class="ttname"><a href="../../df/d0a/group__display__5641as.html#gae1d706a7aeace1c0da7eee8a0a9d412c">set_5641as_display_output</a></div><div class="ttdeci">Display_5641AS_Status set_5641as_display_output(uint16_t display_output[DISPLAY_5641AS_CHARACTERS_SIZE])</div><div class="ttdoc">Sets the ASCII characters that is desired to be currently shown at the 5641AS 7-segment Display Devic...</div><div class="ttdef"><b>Definition</b> 5641as_display_driver.c:199</div></div>
 <div class="ttc" id="agroup__display__5641as_html_gga79aea6daac71928414d30fcf86cbaabea196f875d21073915c7285ce9c10ed08c"><div class="ttname"><a href="../../df/d0a/group__display__5641as.html#gga79aea6daac71928414d30fcf86cbaabea196f875d21073915c7285ce9c10ed08c">Display_5641AS_EC_OK</a></div><div class="ttdeci">@ Display_5641AS_EC_OK</div><div class="ttdoc">5641AS Display Driver Process was successful.</div><div class="ttdef"><b>Definition</b> 5641as_display_driver.h:144</div></div>
 <div class="ttc" id="astruct_display__5641_a_s___g_p_i_o__def__t_html_a54d7f52d3553cc2914237797fe64b28f"><div class="ttname"><a href="../../d1/d9c/struct_display__5641_a_s___g_p_i_o__def__t.html#a54d7f52d3553cc2914237797fe64b28f">Display_5641AS_GPIO_def_t::GPIO_Pin</a></div><div class="ttdeci">uint16_t GPIO_Pin</div><div class="ttdoc">Pin number of the GPIO peripheral from to this HM10_GPIO_def_t structure will be associated with.</div><div class="ttdef"><b>Definition</b> 5641as_display_driver.h:159</div></div>
 <div class="ttc" id="astruct_display__5641_a_s___g_p_i_o__def__t_html_ad0f1ed8aa3fb82ec1e2af89405b6e594"><div class="ttname"><a href="../../d1/d9c/struct_display__5641_a_s___g_p_i_o__def__t.html#ad0f1ed8aa3fb82ec1e2af89405b6e594">Display_5641AS_GPIO_def_t::GPIO_Port</a></div><div class="ttdeci">GPIO_TypeDef * GPIO_Port</div><div class="ttdoc">Type Definition of the GPIO peripheral port to which this HM10_GPIO_def_t structure will be associate...</div><div class="ttdef"><b>Definition</b> 5641as_display_driver.h:158</div></div>
@@ -321,7 +327,7 @@ If the <a class="el" href="../../df/d0a/group__display__5641as.html#ga8a3b0ad512
 </div><!-- fragment --><dl class="section author"><dt>Author</dt><dd>Cesar Miranda Meza (<a href="#" onclick="location.href='mai'+'lto:'+'cmi'+'ra'+'nda'+'me'+'za3'+'@h'+'otm'+'ai'+'l.c'+'om'; return false;">cmira<span class="obfuscator">.nosp@m.</span>ndam<span class="obfuscator">.nosp@m.</span>eza3@<span class="obfuscator">.nosp@m.</span>hotm<span class="obfuscator">.nosp@m.</span>ail.c<span class="obfuscator">.nosp@m.</span>om</a>) </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>January 30, 2024. </dd>
 <dd>
-LAST UPDATE: February 03, 2024. </dd></dl>
+LAST UPDATE: February 06, 2024. </dd></dl>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="ga79aea6daac71928414d30fcf86cbaabe" name="ga79aea6daac71928414d30fcf86cbaabe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga79aea6daac71928414d30fcf86cbaabe">&#9670;&#160;</a></span>Display_5641AS_Status</h2>
@@ -622,7 +628,7 @@ This function must not be called by the implementer and the only reason it exist
       </table>
 </div><div class="memdoc">
 
-<p>Initializes the <a class="el" href="../../df/d0a/group__display__5641as.html">5641AS 7-segment Display Driver module</a> in order to be able to use its provided functions. </p>
+<p>Initializes the <a class="el" href="../../df/d0a/group__display__5641as.html">5641AS 7-segment Display Driver module</a> in order to be able to use its provided functions and also starts that module. </p>
 <p>This function will also update several of its Global Static Pointers and Variables that are used in the <a class="el" href="../../df/d0a/group__display__5641as.html">5641AS 7-segment Display Driver module</a> and will then start the Timer's Base generation in Interrupt Mode of the given Timer via the <code>htim</code> param.</p>
 <dl class="section note"><dt>Note</dt><dd>This Global Static Pointers and variables that will be persisted in the <a class="el" href="../../df/d0a/group__display__5641as.html">5641AS 7-segment Display Driver module</a> by this function are the following:<br  />
 <ul>
@@ -633,7 +639,7 @@ This function must not be called by the implementer and the only reason it exist
 </ul>
 </dd>
 <dd>
-This function must be called only once before calling any other function of the <a class="el" href="../../df/d0a/group__display__5641as.html">5641AS 7-segment Display Driver module</a> .</dd></dl>
+<b>This function must be called only once</b> before calling any other function of the <a class="el" href="../../df/d0a/group__display__5641as.html">5641AS 7-segment Display Driver module</a> and does not require to call the <a class="el" href="../../df/d0a/group__display__5641as.html#gaaad25aab79537a7123473e0f8abbe0bc">start_5641as_display_module</a> after that since this <a class="el" href="../../df/d0a/group__display__5641as.html#gaa05dc07a82e47ca44a857f6723ef2e64">init_5641as_display_module</a> function already takes care of that.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">htim</td><td>Pointer to the Timer is desired for the <a class="el" href="../../df/d0a/group__display__5641as.html">5641AS 7-segment Display Driver module</a> to use for starting and using its corresponding Timer's Base generation in Interrupt Mode in order for the <a class="el" href="../../df/d0a/group__display__5641as.html">5641AS 7-segment Display Driver module</a> to count and simulate the On and Off times a PWM for each of the 7-segment Displays of the 5641AS Device. </td></tr>
@@ -644,7 +650,9 @@ This function must be called only once before calling any other function of the 
   </dd>
 </dl>
 <dl class="section author"><dt>Author</dt><dd>César Miranda Meza (<a href="#" onclick="location.href='mai'+'lto:'+'cmi'+'ra'+'nda'+'me'+'za3'+'@h'+'otm'+'ai'+'l.c'+'om'; return false;">cmira<span class="obfuscator">.nosp@m.</span>ndam<span class="obfuscator">.nosp@m.</span>eza3@<span class="obfuscator">.nosp@m.</span>hotm<span class="obfuscator">.nosp@m.</span>ail.c<span class="obfuscator">.nosp@m.</span>om</a>) </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>January 28, 2024. </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>January 28, 2024. </dd>
+<dd>
+LAST UPDATE: February 06, 2024. </dd></dl>
 
 </div>
 </div>
@@ -740,6 +748,50 @@ LAST UPDATE: February 03, 2024. </dd></dl>
 </dl>
 <dl class="section author"><dt>Author</dt><dd>César Miranda Meza (<a href="#" onclick="location.href='mai'+'lto:'+'cmi'+'ra'+'nda'+'me'+'za3'+'@h'+'otm'+'ai'+'l.c'+'om'; return false;">cmira<span class="obfuscator">.nosp@m.</span>ndam<span class="obfuscator">.nosp@m.</span>eza3@<span class="obfuscator">.nosp@m.</span>hotm<span class="obfuscator">.nosp@m.</span>ail.c<span class="obfuscator">.nosp@m.</span>om</a>) </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>January 28, 2024. </dd></dl>
+
+</div>
+</div>
+<a id="gaaad25aab79537a7123473e0f8abbe0bc" name="gaaad25aab79537a7123473e0f8abbe0bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaaad25aab79537a7123473e0f8abbe0bc">&#9670;&#160;</a></span>start_5641as_display_module()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void start_5641as_display_module </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start the Timer's Base generation in Interrupt Mode of the given Timer that the <a class="el" href="../../df/d0a/group__display__5641as.html">5641AS 7-segment Display Driver module</a> has been configured with when initializing it via the <a class="el" href="../../df/d0a/group__display__5641as.html#gaa05dc07a82e47ca44a857f6723ef2e64">init_5641as_display_module</a> function. </p>
+<dl class="section author"><dt>Author</dt><dd>César Miranda Meza (<a href="#" onclick="location.href='mai'+'lto:'+'cmi'+'ra'+'nda'+'me'+'za3'+'@h'+'otm'+'ai'+'l.c'+'om'; return false;">cmira<span class="obfuscator">.nosp@m.</span>ndam<span class="obfuscator">.nosp@m.</span>eza3@<span class="obfuscator">.nosp@m.</span>hotm<span class="obfuscator">.nosp@m.</span>ail.c<span class="obfuscator">.nosp@m.</span>om</a>) </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>February 06, 2024. </dd></dl>
+
+</div>
+</div>
+<a id="ga289f3e96f0aaff9fa5862752956eee9f" name="ga289f3e96f0aaff9fa5862752956eee9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga289f3e96f0aaff9fa5862752956eee9f">&#9670;&#160;</a></span>stop_5641as_display_module()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stop_5641as_display_module </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stops the Timer's Base generation in Interrupt Mode of the given Timer that the <a class="el" href="../../df/d0a/group__display__5641as.html">5641AS 7-segment Display Driver module</a> has been configured with when initializing it via the <a class="el" href="../../df/d0a/group__display__5641as.html#gaa05dc07a82e47ca44a857f6723ef2e64">init_5641as_display_module</a> function. </p>
+<dl class="section author"><dt>Author</dt><dd>César Miranda Meza (<a href="#" onclick="location.href='mai'+'lto:'+'cmi'+'ra'+'nda'+'me'+'za3'+'@h'+'otm'+'ai'+'l.c'+'om'; return false;">cmira<span class="obfuscator">.nosp@m.</span>ndam<span class="obfuscator">.nosp@m.</span>eza3@<span class="obfuscator">.nosp@m.</span>hotm<span class="obfuscator">.nosp@m.</span>ail.c<span class="obfuscator">.nosp@m.</span>om</a>) </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>February 06, 2024. </dd></dl>
 
 </div>
 </div>

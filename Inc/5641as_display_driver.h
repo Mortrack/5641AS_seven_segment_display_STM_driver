@@ -122,7 +122,7 @@
  *
  * @author 	Cesar Miranda Meza (cmirandameza3@hotmail.com)
  * @date	January 30, 2024.
- * @date    LAST UPDATE: February 03, 2024.
+ * @date    LAST UPDATE: February 06, 2024.
  */
 
 #ifndef DISPLAY_5641AS_DRIVER_H_
@@ -266,7 +266,24 @@ uint32_t get_display_off_time_steps();
  */
 void set_display_off_time_steps(uint32_t off_time_steps);
 
-/**@brief   Initializes the @ref display_5641as in order to be able to use its provided functions.
+/**@brief   Start the Timer's Base generation in Interrupt Mode of the given Timer that the @ref display_5641as has been
+ *          configured with when initializing it via the @ref init_5641as_display_module function.
+ *
+ * @author	César Miranda Meza (cmirandameza3@hotmail.com)
+ * @date    February 06, 2024.
+ */
+void start_5641as_display_module(void);
+
+/**@brief   Stops the Timer's Base generation in Interrupt Mode of the given Timer that the @ref display_5641as has been
+ *          configured with when initializing it via the @ref init_5641as_display_module function.
+ *
+ * @author	César Miranda Meza (cmirandameza3@hotmail.com)
+ * @date    February 06, 2024.
+ */
+void stop_5641as_display_module(void);
+
+/**@brief   Initializes the @ref display_5641as in order to be able to use its provided functions and also starts that
+ *          module.
  *
  * @details This function will also update several of its Global Static Pointers and Variables that are used in the
  *          @ref display_5641as and will then start the Timer's Base generation in Interrupt Mode of the given Timer via
@@ -279,7 +296,9 @@ void set_display_off_time_steps(uint32_t off_time_steps);
  *          - The @ref display_on_time_steps Global Static Variable with the value of the \p on_time_steps param.
  *          - The @ref display_off_time_steps Global Static Variable with the value of the \p off_time_steps param.
  *
- * @note    This function must be called only once before calling any other function of the @ref display_5641as .
+ * @note    <b>This function must be called only once</b> before calling any other function of the @ref display_5641as
+ *          and does not require to call the @ref start_5641as_display_module after that since this
+ *          @ref init_5641as_display_module function already takes care of that.
  *
  * @param[in] htim          Pointer to the Timer is desired for the @ref display_5641as to use for starting and using
  *                          its corresponding Timer's Base generation in Interrupt Mode in order for the
@@ -297,6 +316,7 @@ void set_display_off_time_steps(uint32_t off_time_steps);
  *
  * @author	César Miranda Meza (cmirandameza3@hotmail.com)
  * @date    January 28, 2024.
+ * @date    LAST UPDATE: February 06, 2024.
  */
 void init_5641as_display_module(TIM_HandleTypeDef *htim, Display_5641AS_peripherals_def_t *peripherals, uint32_t on_time_steps, uint32_t off_time_steps);
 
