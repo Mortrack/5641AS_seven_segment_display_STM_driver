@@ -183,7 +183,7 @@ void init_5641as_display_module(TIM_HandleTypeDef *htim, Display_5641AS_peripher
 
 void start_5641as_display_module(void)
 {
-    HAL_TIM_Base_Stop_IT(p_htim);
+    HAL_TIM_Base_Start_IT(p_htim);
 }
 
 void stop_5641as_display_module(void)
