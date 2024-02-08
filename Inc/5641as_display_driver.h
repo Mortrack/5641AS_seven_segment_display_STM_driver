@@ -122,7 +122,7 @@
  *
  * @author 	Cesar Miranda Meza (cmirandameza3@hotmail.com)
  * @date	January 30, 2024.
- * @date    LAST UPDATE: February 06, 2024.
+ * @date    LAST UPDATE: February 08, 2024.
  */
 
 #ifndef DISPLAY_5641AS_DRIVER_H_

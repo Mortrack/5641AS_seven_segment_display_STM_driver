@@ -153,6 +153,7 @@ static void show_custom_display_output(GPIO_PinState A_pin_state, GPIO_PinState 
  *
  * @author	César Miranda Meza (cmirandameza3@hotmail.com)
  * @date    January 28, 2024.
+ * @date    LAST UPDATE: February 08, 2024.
  */
 static void show_null_display_output();
 
@@ -572,22 +573,6 @@ static void show_null_display_output()
 {
     /* Turn Off all the terminals of the 5641AS 7-segment Display Device. */
     turn_off_all_5641as_display_terminals();
-
-    /* Enable the current K-Display Output of the 5641AS Device. */
-    switch (currently_enabled_5641as_7segment_display)
-    {
-        case 0:
-            HAL_GPIO_WritePin(p_display_peripherals->K1.GPIO_Port, p_display_peripherals->K1.GPIO_Pin, GPIO_PIN_RESET);
-            break;
-        case 1:
-            HAL_GPIO_WritePin(p_display_peripherals->K2.GPIO_Port, p_display_peripherals->K2.GPIO_Pin, GPIO_PIN_RESET);
-            break;
-        case 2:
-            HAL_GPIO_WritePin(p_display_peripherals->K3.GPIO_Port, p_display_peripherals->K3.GPIO_Pin, GPIO_PIN_RESET);
-            break;
-        default:
-            HAL_GPIO_WritePin(p_display_peripherals->K4.GPIO_Port, p_display_peripherals->K4.GPIO_Pin, GPIO_PIN_RESET);
-    }
 }
 
 static void turn_off_all_5641as_display_terminals()
