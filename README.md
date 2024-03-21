@@ -1,10 +1,11 @@
-# 5641AS 7-segment Display Driver module C driver library
+# 5641AS 7-segment Display Driver module C STMicroelectronics driver library
 
-Version: 1.4.1.3
+Version: 1.4.2.3
 
 This library provides the definitions, variables and functions that together work as the driver for the 5641AS 7-segment
-Display Device with the purpose of being used by the implementer for whatever custom application purpose. For more
-details about how to use this library, feel free to read the
+Display Device in a STMicroelectronics microcontroller or microprocessor with the purpose of being used by the
+implementer for whatever custom application purpose. For more details about how to use this library, feel free to read
+the
 <a href=https://github.com/Mortrack/5641AS_seven_segment_display_STM_driver/tree/main/documentation>documentation of this project</a>.
 
 # How to explore the project files.
