@@ -155,8 +155,8 @@ typedef enum
  *          Display device will be connected to.
  */
 typedef struct __attribute__ ((__packed__)) {
-    GPIO_TypeDef *GPIO_Port;	//!< Type Definition of the GPIO peripheral port to which this @ref HM10_GPIO_def_t structure will be associated with.
-    uint16_t GPIO_Pin;			//!< Pin number of the GPIO peripheral from to this @ref HM10_GPIO_def_t structure will be associated with.
+    GPIO_TypeDef *GPIO_Port;	//!< Type Definition of the GPIO peripheral port to which this @ref Display_5641AS_GPIO_def_t structure will be associated with.
+    uint16_t GPIO_Pin;			//!< Pin number of the GPIO peripheral from to this @ref Display_5641AS_GPIO_def_t structure will be associated with.
 } Display_5641AS_GPIO_def_t;
 
 /**@brief	5641AS 7-segment Display Device's Peripherals Definition parameters structure.
