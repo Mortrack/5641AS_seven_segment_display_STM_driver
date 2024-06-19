@@ -1,6 +1,6 @@
 # 5641AS 7-segment Display Driver module C STMicroelectronics driver library
 
-Version: 1.4.2.3
+Version: 1.4.2.4
 
 This library provides the definitions, variables and functions that together work as the driver for the 5641AS 7-segment
 Display Device in a STMicroelectronics microcontroller or microprocessor with the purpose of being used by the
