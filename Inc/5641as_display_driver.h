@@ -35,13 +35,17 @@
  *
  * @note    Whenever this module is used as the driver for the 5641AS Device, that Device will always start operating
  *          with \c NULL ASCII values at all the 7-segment Displays that the Device has available.
- *
  * @note    If the @ref HAL_TIM_PeriodElapsedCallback function provided by the STMicroelectronic's Library is used in
  *          the main program or by another library, then this module will not work unless the code used in the
  *          @ref HAL_TIM_PeriodElapsedCallback function that lies inside this module is added into that other main
  *          program or external library (where you will probably have to erase the one entire
  *          @ref HAL_TIM_PeriodElapsedCallback function that lies inside this module to guarantee that the compiled
  *          program works as expected).
+ * @note    Another thing to highlight is that this @ref display_5641as has included the "stm32f1xx_hal.h" header file
+ *          to be able to use the Timer assigned to this module. However, this header file is specifically meant for the
+ *			STM32F1 series devices. If yours is from a different type, then you will have to substitute the right one
+ *			here for your particular STMicroelectronics device. However, if you cant figure out what the name of that
+ *			header file is, then simply substitute that line of code from this @ref mlx90614 by: #include "main.h"
  *
  * @details <b><u>Code Example for displaying all the ASCII Characters that can be shown at the 5641AS 7-segment Display
  *          Device via the @ref display_5641as :</u></b>
